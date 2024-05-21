@@ -1,6 +1,13 @@
 name: Commit Stage #워크 플로의 이름
-on: push # 새 코드를 푸시하면 워크플로를 시작한다.
-
+on:
+  push: # 새 코드를 푸시하면 워크플로를 시작한다.
+    branches:
+      - 'main' # main에 push할 때
+      - 'develop' # develop에 push할 때
+  pull_request:
+    branches:
+      - 'main'
+      - 'develop'
 jobs:
   build: #작업의 고유 식별자
     name: Build and Test #작업의 인간 친화적 명칭
@@ -14,7 +21,8 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 17
+          distribution: temurin
+          java-version: 17
           cache: gradle
       - name: Code vulnerability scanning
         uses: anchore/scan-action@v3
@@ -25,7 +33,7 @@ jobs:
           severity-cutoff: high
           acs-report-enable: true
       - name: Upload / vulnerability report
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         if: success() || failure()
         with:
           sarif_file: ${{ steps.scan.outputs.sarif }}
