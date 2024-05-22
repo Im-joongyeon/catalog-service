@@ -2,6 +2,7 @@ package com.polarbookshop.catalogservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 @SpringBootApplication
 /** @SpringBootApplication
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 2. @ComponentScan: 컴포넌트 검색을 통해 빈을 찾아 스프링 컨텍스트에 자동으로 등록
  * 3. @EnableAutoConfiguration: 스프링 부트에서 제공하는 자동 설정 기능을 활성화
  */
+@ConfigurationPropertiesScan
 public class CatalogServiceApplication {
 
     public static void main(String[] args) {
