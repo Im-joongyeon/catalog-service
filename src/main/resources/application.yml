@@ -15,6 +15,20 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
+      request-connect-timeout: 5000 #설정 서버에 연결될때까지 기다리는 시간
+      request-read-timeout: 5000 #설정 서버에서 데이터를 읽을때까지 기다리는 시간
+      fail-fast: true #서버 연결 실패를 치명적 오류로 인식-> 재시도 동작을 껏다 켰다 할 수 있는 옵션 , 로컬에서 테스트하려면 false로 지정
+      retry: #컨피그 서비스에 연결을 몇 번 더 시도하기위해 정의
+        max-attempts: #재시도 최대 횟수
+        initial-interval: 1000 #최대 재시도 지연 시간
+        max-interval: 2000 #재시도 지연 최대 시간
+        multiplier: 1.1 #지연 계산 시간 승수
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh #HTTP를 통해 /actuator/refresh 엔드포인트를 노출한다.
 
 polar:
   greeting: Welcome to the local book catalog!
