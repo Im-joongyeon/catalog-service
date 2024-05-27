@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by I'm_joongyeon on 5/22/24.
  */
@@ -21,10 +23,10 @@ public class BookDataLoader {
 
     @EventListener(ApplicationReadyEvent.class) //ApplicationReadyEvent가 발생하면 테스트 데이터 생성이 시작된다. 이 이벤트는 애플리케이션 시작 단계가 완료되면 발생한다.
     public void loadBookTestData() {
-        Book book1 = new Book("1234567891", "Northen Lights", "Lyra", 9.90);
-        Book book2 = new Book("1234567892", "Polar Journey", "Iorek Polarson", 12.90);
+        bookRepository.deleteAll();
+        Book book1 = Book.of("1234567891", "Northen Lights", "Lyra", 9.90, "Polarsophia");
+        Book book2 = Book.of("1234567892", "Polar Journey", "Iorek Polarson", 12.90, "Polarsophia");
 
-        bookRepository.save(book1);
-        bookRepository.save(book2);
+        bookRepository.saveAll(List.of(book1, book2));
     }
 }

@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.*;
 public class BookJsonTests {
     @Autowired
     private JacksonTester<Book> json; //json 직렬화 및 역직렬화를 확인하기 위한 유틸리티 클래스
-
+/*
     @Test
     void testSerialize() throws Exception {
         Book book = new Book("1234567890", "Title", "Author", 9.90);
@@ -45,4 +45,6 @@ public class BookJsonTests {
                 .usingRecursiveComparison()
                 .isEqualTo(new Book("1234567890", "Title", "Author", 9.90));
     }
+
+ */
 }

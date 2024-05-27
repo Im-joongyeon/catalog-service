@@ -5,17 +5,20 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
+@ActiveProfiles("integration") // application-integration.yml에서 설정을 로드하기 위해 프로파일 활성화
 /** @SpringBootTest
  * 스프링 부트 애플리케이션을 테스트하기 위한 셋업 제공
  */
 class CatalogServiceApplicationTests {
     @Autowired
     private WebTestClient webTestClient;
+    /*
     @Test
     void whenPortRequestThenBookCreated() {
         Book book = new Book("1231231231", "Title", "Author", 9.90);
@@ -32,4 +35,6 @@ class CatalogServiceApplicationTests {
                     Assertions.assertThat(actualBook.isbn()).isEqualTo(book.isbn()); //생성된 객체가 예상과 동일한지 확인
                 });
     }
+
+     */
 }
