@@ -10,13 +10,14 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * Created by I'm_joongyeon on 5/21/24.
  */
 
 class BookValidationTests {
     private static Validator validator;
-/*
     @BeforeAll //테스트 실행전 가장 먼저 실행할 코드 블록
     static void setUp() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -25,20 +26,18 @@ class BookValidationTests {
 
     @Test
     void whenAllFieldsCorrectThenValidationSucceeds() {
-        var book =
-                new Book("1234567890", "Title", "Author", 9.90);
+        var book = Book.of("1234567890", "Title", "Author", 9.90, "Polarsophia");
         Set<ConstraintViolation<Book>> violations = validator.validate(book);
-        Assertions.assertThat(violations).isEmpty(); //유효성 검사에서 오류가 없음을 확인한다.
+        assertThat(violations).isEmpty();
     }
 
     @Test
     void whenIsbnDefinedButIncorrectThenValidationFails() {
-        Book book = new Book("a234567890", "Title", "Author", 9.90);
+        var book = Book.of("a234567890", "Title", "Author", 9.90, "Polarsophia");
         Set<ConstraintViolation<Book>> violations = validator.validate(book);
-        Assertions.assertThat(violations).hasSize(1);
-        Assertions.assertThat(violations.iterator().next().getMessage())
+        assertThat(violations).hasSize(1);
+        assertThat(violations.iterator().next().getMessage())
                 .isEqualTo("The ISBN format must be valid.");
     }
 
- */
 }
