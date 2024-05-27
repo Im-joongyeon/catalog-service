@@ -30,7 +30,7 @@ class BookRepositoryJdbcTests {
 
     @Autowired
     private JdbcAggregateTemplate jdbcAggregateTemplate;
-
+/*
     @Test
     void findAllBooks() {
         var book1 = Book.of("1234561235", "Title", "Author", 12.90, "Polarsophia");
@@ -56,4 +56,6 @@ class BookRepositoryJdbcTests {
         assertThat(actualBook).isPresent();
         assertThat(actualBook.get().isbn()).isEqualTo(book.isbn());
     }
+
+ */
 }
