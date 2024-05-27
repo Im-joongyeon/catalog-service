@@ -11,7 +11,6 @@ import java.util.Optional;
 /**
  * Created by I'm_joongyeon on 5/20/24.
  */
-@Repository
 public interface BookRepository extends CrudRepository<Book, Long> {
     Optional<Book> findByIsbn(String isbn);
     boolean existsByIsbn(String isbn);
