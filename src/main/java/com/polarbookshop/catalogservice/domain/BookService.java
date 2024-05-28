@@ -17,7 +17,7 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public Book viewBookDetail(String isbn) {
+    public Book viewBookDetails(String isbn) {
         return bookRepository.findByIsbn(isbn)
                 .orElseThrow(() -> new BookNotFoundException(isbn));
     }
@@ -45,10 +45,10 @@ public class BookService {
                             book.publisher(),
                             existingBook.createdDate(),
                             existingBook.lastModifiedDate(),
-                            existingBook.version()
-                    );
+                            existingBook.version());
                     return bookRepository.save(bookToUpdate);
                 })
                 .orElseGet(() -> addBookToCatalog(book));
     }
 }
+

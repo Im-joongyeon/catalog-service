@@ -11,7 +11,6 @@ import org.springframework.data.annotation.Version;
 
 import java.time.Instant;
 
-
 /**
  * Created by I'm_joongyeon on 5/20/24.
  */

@@ -24,10 +24,9 @@ public class BookController {
         return bookService.viewBookList();
     }
 
-    @GetMapping("{isbn}") //url -> /books/{isbn}
-                        //@PathVariable은 메서드 변수를 URL 템플릿변수 ({isbn})와 바인드한다.
+    @GetMapping("{isbn}")
     public Book getByIsbn(@PathVariable String isbn) {
-        return bookService.viewBookDetail(isbn);
+        return bookService.viewBookDetails(isbn);
     }
 
     @PostMapping

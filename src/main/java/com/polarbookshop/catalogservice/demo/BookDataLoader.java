@@ -24,9 +24,8 @@ public class BookDataLoader {
     @EventListener(ApplicationReadyEvent.class) //ApplicationReadyEvent가 발생하면 테스트 데이터 생성이 시작된다. 이 이벤트는 애플리케이션 시작 단계가 완료되면 발생한다.
     public void loadBookTestData() {
         bookRepository.deleteAll();
-        Book book1 = Book.of("1234567891", "Northen Lights", "Lyra", 9.90, "Polarsophia");
-        Book book2 = Book.of("1234567892", "Polar Journey", "Iorek Polarson", 12.90, "Polarsophia");
-
+        var book1 = Book.of("1234567891", "Northern Lights", "Lyra Silverstar", 9.90, "Polarsophia");
+        var book2 = Book.of("1234567892", "Polar Journey", "Iorek Polarson", 12.90, "Polarsophia");
         bookRepository.saveAll(List.of(book1, book2));
     }
 }
