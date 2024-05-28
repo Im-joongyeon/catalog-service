@@ -18,4 +18,5 @@ public class HomeController {
     public String getGreeting() {
         return polarProperties.getGreeting(); // 설정 데이터 빈에서 갖온 환경메세지를 사용한다.
     }
+
 }
