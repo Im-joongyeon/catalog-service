@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * Created by I'm_joongyeon on 5/21/24.
  */
@@ -22,7 +24,7 @@ class BookValidationTests {
 
     private static Validator validator;
 
-    @BeforeAll
+    @BeforeAll //테스트 실행전 가장 먼저 실행할 코드 블록
     static void setUp() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
@@ -45,6 +47,7 @@ class BookValidationTests {
         assertThat(constraintViolationMessages)
                 .contains("The book ISBN must be defined.")
                 .contains("The ISBN format must be valid.");
+
     }
 
     @Test
@@ -55,7 +58,6 @@ class BookValidationTests {
         assertThat(violations.iterator().next().getMessage())
                 .isEqualTo("The ISBN format must be valid.");
     }
-
     @Test
     void whenTitleIsNotDefinedThenValidationFails() {
         var book = Book.of("1234567890", "", "Author", 9.90, "Polarsophia");
