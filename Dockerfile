@@ -6,11 +6,8 @@ RUN java -Djarmode=layertools -jar catalog-service.jar extract
 
 FROM eclipse-temurin:17
 WORKDIR workspace
-RUN useradd spring
-USER spring
 COPY --from=builder workspace/dependencies/ ./
 COPY --from=builder workspace/spring-boot-loader/ ./
 COPY --from=builder workspace/snapshot-dependencies/ ./
 COPY --from=builder workspace/application/ ./
-
 ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
